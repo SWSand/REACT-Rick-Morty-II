@@ -53,11 +53,11 @@ function CharactersPage() {
                                 <Button variant="outline-light"  onClick={()=>{navigate(`/character/${character.id}`)}}>View More Details...</Button>                            
                             </Card.Body>
                             <Button className="m-1" variant={!checkFavorites(character.id) ? 'secondary': 'warning'} disabled={!checkFavorites(character.id)}  onClick={()=> {
-                                if (checkFavorites(character.id)){
+                                if (checkFavorites(character.id) && favorites.length<4){
                                     setFavorites([...favorites, character])
                                   } 
                                 }}>{checkFavorites(character.id) ? 'Add to Favorites' : 'Favorite' }</Button>
-                            <Button className="m-1" variant={checkFavorites(character.id) ? 'light': 'danger'} disabled={checkFavorites(character.id)}  onClick={()=> {handleRemoveFavorite(character.id)}}>{checkFavorites(character.id) ? '' : 'Remove From Favorites' }</Button>                
+                            <Button className="m-1" variant={checkFavorites(character.id) ? 'light': 'danger'} disabled={checkFavorites(character.id) }  onClick={()=> {handleRemoveFavorite(character.id)}}>{checkFavorites(character.id) ? '' : 'Remove From Favorites' }</Button>                
                         </Card>
                     </Col>
                 ))}

@@ -21,7 +21,6 @@ function CharacterDetails(){
         };
         getCharacter();
     },[])
-    
     const handleRemoveFavorite = (id) =>{
         
         let updatedFavorites = favorites.filter(char => char.id !== id);
@@ -56,7 +55,7 @@ function CharacterDetails(){
                                 <Card.Text>Type: {character.type} </Card.Text>
                             </Card.Body>
                             <Button className="m-1" variant={!checkFavorites(character.id) ? 'secondary': 'warning'} disabled={!checkFavorites(character.id)}  onClick={()=> {
-                                if (checkFavorites(character.id)){
+                                if (checkFavorites(character.id) && favorites.length<4){
                                     setFavorites([...favorites, character])
                                   } 
                                 }}>{checkFavorites(character.id) ? 'Add to Favorites' : 'Favorite' }</Button>
